@@ -6,15 +6,20 @@ from .serializers import StudentModelSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
+from .customThrottle import MyThrottle # this is custom throttle
+from rest_framework.throttling import ScopedRateThrottle # this used to apply for some of part
 
 # Create your views here.
 class StudentViewset(viewsets.ViewSet):
-   
+   # scope rate throttle used for only some part eg: listview, createview etc
      
     authentication_classes = [JWTAuthentication] # this is token authentication
-    permission_classes = [IsAuthenticated] 
+    permission_classes = [IsAuthenticatedOrReadOnly] 
+    throttle_classes = [UserRateThrottle, AnonRateThrottle] # anonymous user 
+    # throttle_classes = [UserRateThrottle, MyThrottle] # anonymous user can throttle by custom throttle
 
     def list(self, request):
         stu = Student.objects.all()
