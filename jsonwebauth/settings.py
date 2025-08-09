@@ -149,3 +149,13 @@ SIMPLE_JWT = {
     'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
     'TOKEN_TYPE_CLAIM': 'token_type',
 }
+
+# this code for throttling
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_RATES':{
+        'anon':'2/day',
+        'user':'5/day',
+        'mythrottle':'10/day',
+        'liststu':'1'
+    }
+}
