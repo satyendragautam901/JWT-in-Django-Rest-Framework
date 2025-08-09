@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# If using environment variables
+.env
+
+# VSCode / PyCharm / IDE settings
+.vscode/
+.idea/
+
+# Migrations (optional — see note below)
+# Comment out if you want to keep migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# OS-specific
+.DS_Store
+Thumbs.db
